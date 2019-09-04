@@ -1,0 +1,12 @@
+<a class="d-flex justify-content-between" href="#">
+  <div class="mr-3">
+    <h4 class="list-group-item-heading">{{recipe.name}}</h4>
+    <p>{{recipe.description}}</p>
+  </div>
+  <figure class="m-0">
+    <img
+      [alt]="recipe.name"
+      [src]="recipe.imagePath"
+      style="max-height: 80px;">
+  </figure>
+</a>
