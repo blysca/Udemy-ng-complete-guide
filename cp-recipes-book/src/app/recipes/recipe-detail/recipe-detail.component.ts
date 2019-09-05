@@ -17,6 +17,6 @@ export class RecipeDetailComponent implements OnInit, OnChanges {
   }
   
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('*** recipe = ', this.recipe);
+    // console.log('*** recipe = ', this.recipe);
   }
 }

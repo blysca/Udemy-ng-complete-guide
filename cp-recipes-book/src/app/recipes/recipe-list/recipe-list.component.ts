@@ -8,7 +8,7 @@ import {Recipe} from '../recipe.model';
   styleUrls: ['./recipe-list.component.scss']
 })
 export class RecipeListComponent implements OnInit {
-  @Output() showRecipe = new EventEmitter<Recipe>();
+  @Output() recipeWasSelected = new EventEmitter<Recipe>();
   
   recipes: Recipe[] = [
     new Recipe('Beef Wellington', 'Beef Wellington is a preparation of fillet steak coated with pâté (often pâté de foie gras) and duxelles, which is then wrapped in parma ham, puff pastry and baked. Some recipes include wrapping the coated meat in a crêpe to retain the moisture and prevent it from making the pastry soggy.', 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Beef_Wellington_-_Crosscut.jpg'),
@@ -23,8 +23,8 @@ export class RecipeListComponent implements OnInit {
 
   ngOnInit() {}
   
-  activateItem(ev: boolean, i: number) {
+  onRecipeSelected(r: Recipe, i){
     this.activeIndex = i;
-    this.showRecipe.emit(this.recipes[i]);
+    this.recipeWasSelected.emit(r);
   }
 }

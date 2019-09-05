@@ -6,15 +6,6 @@ import {Recipe} from './recipe.model';
   templateUrl: './recipes.component.html',
   styleUrls: ['./recipes.component.scss']
 })
-export class RecipesComponent implements OnInit {
-  activeRecipe: Recipe;
-  constructor() { }
-
-  ngOnInit() {
-  }
-  
-  activeItem(recipe: Recipe) {
-    this.activeRecipe = recipe;
-  }
-
+export class RecipesComponent {
+  selectedRecipe: Recipe;
 }

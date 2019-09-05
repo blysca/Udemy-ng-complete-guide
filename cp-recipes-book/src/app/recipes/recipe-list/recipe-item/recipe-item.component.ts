@@ -8,13 +8,13 @@ import {Recipe} from '../../recipe.model';
 })
 export class RecipeItemComponent implements OnInit {
   @Input() recipe: Recipe;
-  @Output() activate = new EventEmitter<boolean>();
+  @Output() recipeSelected = new EventEmitter<void>();
   constructor() { }
 
   ngOnInit() {
   }
   
-  activateRecipe() {
-    this.activate.emit(true);
+  onSelected() {
+    this.recipeSelected.emit();
   }
 }
