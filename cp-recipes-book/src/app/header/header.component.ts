@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   }
   
   ngOnInit() {
-    this.activeItem = 'shopping-list';
+    this.activeItem = 'recipes';
     this.featureSelected.emit(this.activeItem);
   }
   

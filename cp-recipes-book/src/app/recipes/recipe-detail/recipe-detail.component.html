@@ -3,9 +3,9 @@
     <figure>
       <img
         [alt]="recipe.name"
-        class="img-fluid"
         [src]="recipe.imagePath"
-      style="max-height: 320px;"
+        class="img-fluid"
+        style="max-height: 320px;"
       >
     </figure>
   </div>
@@ -19,11 +19,11 @@
 <div class="row">
   <div class="col-12">
     <!-- Example single danger button -->
-    <div class="btn-group"
-      [ngClass]="{'show': manageRecipe}"
+    <div
+         appDropdown
+         class="btn-group"
     >
       <button
-        (click)="manageRecipe = !manageRecipe"
         aria-expanded="false"
         aria-haspopup="true"
         class="btn btn-primary dropdown-toggle"
@@ -32,7 +32,6 @@
       >Manage Recipe
       </button>
       <div
-        [ngClass]="{'show': manageRecipe}"
         class="dropdown-menu">
         <a class="dropdown-item" href="#">To Shopping List</a>
         <a class="dropdown-item" href="#">Edit Recipe</a>

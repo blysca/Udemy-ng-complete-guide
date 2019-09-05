@@ -37,14 +37,16 @@
     </ul>
     
     <ul class="navbar-nav ml-3">
-      <li class="nav-item dropdown">
+      <li
+        appDropdown
+        class="nav-item dropdown">
         <a aria-expanded="false"
            aria-haspopup="true"
            class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
            id="manage-data" role="button">
           Manage
         </a>
-        <div aria-labelledby="manage-data" class="dropdown-menu">
+        <div aria-labelledby="manage-data" class="dropdown-menu dropdown-menu-lg-right">
           <a class="dropdown-item" href="#">Save Data</a>
           <a class="dropdown-item" href="#">Fetch Data</a>
         </div>
