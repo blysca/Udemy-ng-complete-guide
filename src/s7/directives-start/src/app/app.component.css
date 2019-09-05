@@ -1,0 +1,9 @@
+.container {
+  margin-top: 30px;
+}
+
+.odd {
+  background-color: crimson;
+  color: white;
+  font-weight : bold;
+}
