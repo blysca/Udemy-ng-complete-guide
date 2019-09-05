@@ -1,12 +1,13 @@
-<a class="d-flex justify-content-between" href="#">
-  <div class="mr-3">
-    <h4 class="list-group-item-heading">{{recipe.name}}</h4>
-    <p>{{recipe.description}}</p>
+<a
+  (click)="activateRecipe()"
+  class="d-flex justify-content-start" href="#">
+  <div class="media-body mr-3">
+    <h5 class="mt-0">{{recipe.name}}</h5>
+    <p class="">{{recipe.description}}</p>
   </div>
-  <figure class="m-0">
-    <img
-      [alt]="recipe.name"
-      [src]="recipe.imagePath"
-      style="max-height: 48px;">
-  </figure>
+  <img
+    [alt]="recipe.name"
+    [src]="recipe.imagePath"
+    class="img-thumbnail"
+    style="max-height: 48px;">
 </a>

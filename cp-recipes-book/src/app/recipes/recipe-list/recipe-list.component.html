@@ -9,8 +9,10 @@
     <div class="list-group">
       <app-recipe-item
         class="list-group-item"
-        *ngFor="let rEl of recipes"
+        *ngFor="let rEl of recipes; let i = index;"
         [recipe]="rEl"
+        (activate)="activateItem($event, i)"
+        [ngClass]="{'active': i === activeIndex}"
       ></app-recipe-item>
     </div>
   </div>
