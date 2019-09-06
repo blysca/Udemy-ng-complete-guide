@@ -11,8 +11,6 @@
         class="list-group-item"
         *ngFor="let rEl of recipes; let i = index;"
         [recipe]="rEl"
-        (recipeSelected)="onRecipeSelected(rEl, i)"
-        [ngClass]="{'active': i === activeIndex}"
       ></app-recipe-item>
     </div>
   </div>
