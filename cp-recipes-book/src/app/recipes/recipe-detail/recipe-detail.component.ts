@@ -1,29 +1,25 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Recipe} from '../recipe.model';
-import {ShoppingListService} from '../../shopping-list/shopping-list.service';
+import {RecipeService} from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-detail',
   templateUrl: './recipe-detail.component.html',
   styleUrls: ['./recipe-detail.component.scss']
 })
-export class RecipeDetailComponent implements OnInit, OnChanges {
+export class RecipeDetailComponent implements OnInit {
   manageRecipe: boolean = false;
   
   @Input() recipe: Recipe;
   
   constructor(
-    private slService: ShoppingListService
+    private recipeService: RecipeService
   ) { }
  
   ngOnInit() {
   }
   
-  ngOnChanges(changes: SimpleChanges): void {
-    // console.log('*** recipe = ', this.recipe);
-  }
-  
-  addIngredientToShoppingList() {
-    this.slService.addIngredients(this.recipe.ingredients);
+  onAddToShoppingList() {
+    this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients)
   }
 }
