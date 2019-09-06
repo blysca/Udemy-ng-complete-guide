@@ -12,7 +12,7 @@ export class ShoppingEditComponent implements OnInit {
   @ViewChild('nameInput', {static: true}) nameInputRef: ElementRef;
   
   constructor(
-    private shoppingListService: ShoppingListService
+    private slService: ShoppingListService
   ) {
   }
   
@@ -22,7 +22,7 @@ export class ShoppingEditComponent implements OnInit {
   onAddItem() {
     const name = this.nameInputRef.nativeElement.value;
     const amount = this.amountInputRef.nativeElement.value;
-    this.shoppingListService.addedIngredient.emit(new Ingredient(name, amount))
+    this.slService.addIngredient(new Ingredient(name, amount));
     
     this.clearForm();
   }
