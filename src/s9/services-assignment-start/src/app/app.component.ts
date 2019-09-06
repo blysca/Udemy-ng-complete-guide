@@ -6,12 +6,12 @@ import {CounterService} from './services/counter.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [UserService]
 })
 export class AppComponent implements OnInit{
   actions: ICounterOfActions;
-  activeUsers: string[];
-  inactiveUsers: string[];
+  
   
   constructor(
     private userService: UserService,
@@ -20,7 +20,5 @@ export class AppComponent implements OnInit{
   
   ngOnInit(): void {
     this.actions = this.counterService.counters;
-    this.activeUsers = this.userService.activeUsers;
-    this.inactiveUsers = this.userService.inactiveUsers;
   }
 }

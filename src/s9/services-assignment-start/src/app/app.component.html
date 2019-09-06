@@ -7,12 +7,8 @@
       <h4>inactive=>active: {{ actions.inactiveToActive }}</h4>
     </div>
     <div class="col-xs-12 col-md-6">
-      <app-active-users
-        [users]="activeUsers"
-      ></app-active-users>
-      <app-inactive-users
-        [users]="inactiveUsers"
-      ></app-inactive-users>
+      <app-active-users></app-active-users>
+      <app-inactive-users></app-inactive-users>
     </div>
     <!--
       Optimize this app by adding a UsersService which manages the active and inactive users.
