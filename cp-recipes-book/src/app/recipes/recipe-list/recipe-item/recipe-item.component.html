@@ -1,6 +1,10 @@
+<div
+  routerLinkActive="active"
+  class="list-group-item">
 <a
-  (click)="onSelected()"
-  class="d-flex justify-content-start" href="#">
+  [routerLink]="[index]"
+  
+  class="d-flex justify-content-start">
   <div class="media-body mr-3">
     <h5 class="mt-0">{{recipe.name}}</h5>
     <p class="">{{recipe.description}}</p>
@@ -11,3 +15,4 @@
     class="img-thumbnail"
     style="max-height: 48px;">
 </a>
+</div>
