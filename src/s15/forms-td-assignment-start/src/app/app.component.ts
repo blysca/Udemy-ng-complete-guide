@@ -1,4 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,7 @@ import {Component, ViewChild} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  @ViewChild('formElement', {static: true}) form;
+  @ViewChild('formElement', {static: false}) form: NgForm;
   defaultSubscription = 'advanced';
   submitted: boolean = false;
   
