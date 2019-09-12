@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
   }
   
   onSubmit() {
-    console.log('*** projectForm ', this.projectForm);
+    console.log('*** projectForm ', this.projectForm.value);
     
     this.projectForm.reset();
   }
