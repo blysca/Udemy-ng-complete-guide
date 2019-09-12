@@ -8,8 +8,10 @@ import {Ingredient} from '../../shared/ingredient.model';
   styleUrls: ['./shopping-edit.component.scss']
 })
 export class ShoppingEditComponent implements OnInit {
-  @ViewChild('amountInput', {static: true}) amountInputRef: ElementRef;
-  @ViewChild('nameInput', {static: true}) nameInputRef: ElementRef;
+  /*@ViewChild('amountInput', {static: true}) amountInputRef: ElementRef;
+  @ViewChild('nameInput', {static: true}) nameInputRef: ElementRef;*/
+  
+  @ViewChild('shoppingEditForm', {static: true}) form;
   
   constructor(
     private slService: ShoppingListService
@@ -19,17 +21,17 @@ export class ShoppingEditComponent implements OnInit {
   ngOnInit() {
   }
   
-  onAddItem() {
-    const name = this.nameInputRef.nativeElement.value;
-    const amount = this.amountInputRef.nativeElement.value;
+  onSubmit() {
+    console.log('*** form  ', this.form);
+    const name = this.form.value.name;
+    const amount = this.form.value.amount;
     this.slService.addIngredient(new Ingredient(name, amount));
     
     this.clearForm();
   }
   
   clearForm() {
-    this.nameInputRef.nativeElement.value = '';
-    this.amountInputRef.nativeElement.value = '';
+    this.form.reset();
   }
   
 }
