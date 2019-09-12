@@ -42,7 +42,9 @@
           class="dropdown-item"
         >Edit Recipe</a><!--[routerLink]="['edit']"-->
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item">Delete Recipe</a>
+        <a
+          (click)="onDeleteRecipe()"
+          class="dropdown-item">Delete Recipe</a>
       </div>
     </div>
   </div>
