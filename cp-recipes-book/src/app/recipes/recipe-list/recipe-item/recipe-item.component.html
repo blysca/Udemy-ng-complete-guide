@@ -7,7 +7,7 @@
   class="d-flex justify-content-start">
   <div class="media-body mr-3">
     <h5 class="mt-0">{{recipe.name}}</h5>
-    <p class="">{{recipe.description}}</p>
+    <p class="">{{recipe.description  | slice:0:96 }}</p>
   </div>
   <img
     [alt]="recipe.name"
