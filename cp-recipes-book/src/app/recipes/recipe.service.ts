@@ -10,7 +10,7 @@ import {Subject} from 'rxjs';
 export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
   
-  private recipes: Recipe[] = [
+  /*private recipes: Recipe[] = [
     new Recipe('Beef Wellington',
       'Beef Wellington is a preparation of fillet steak coated with pâté (often pâté de foie gras) and duxelles, which is then wrapped in parma ham, puff pastry and baked. Some recipes include wrapping the coated meat in a crêpe to retain the moisture and prevent it from making the pastry soggy.',
       'https://upload.wikimedia.org/wikipedia/commons/a/ac/Beef_Wellington_-_Crosscut.jpg',
@@ -52,11 +52,18 @@ export class RecipeService {
         new Ingredient('pint heavy cream', 1),
         new Ingredient('kiwi, peeled and sliced', 6)
       ]),
-  ];
+  ];*/
+  
+  private recipes: Recipe[] = [];
   
   constructor(
     private slService: ShoppingListService
   ) {}
+  
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
+  }
   
   getRecipes() {
     return this.recipes.slice();

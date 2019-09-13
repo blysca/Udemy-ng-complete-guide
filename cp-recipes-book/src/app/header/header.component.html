@@ -41,13 +41,21 @@
         class="nav-item dropdown">
         <a aria-expanded="false"
            aria-haspopup="true"
-           class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+           class="nav-link dropdown-toggle"
+           data-toggle="dropdown"
+           style="cursor: pointer;"
            id="manage-data" role="button">
           Manage
         </a>
         <div aria-labelledby="manage-data" class="dropdown-menu dropdown-menu-lg-right">
-          <a class="dropdown-item">Save Data</a>
-          <a class="dropdown-item">Fetch Data</a>
+          <a
+            (click)="onSaveData()"
+            style="cursor: pointer;"
+            class="dropdown-item">Save Data</a>
+          <a
+            (click)="onFetchData()"
+            class="dropdown-item"
+            style="cursor: pointer;">Fetch Data</a>
         </div>
       </li>
     </ul>
