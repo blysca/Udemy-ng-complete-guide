@@ -20,10 +20,21 @@
     <ul class="navbar-nav mr-auto">
       <li [routerLinkActive]="'active'"
           class="nav-item"
+          *ngIf="isAuthenticated"
       >
         <a
           [routerLink]="['/recipes']"
           class="nav-link">Recipes</a>
+      </li>
+      <li
+        *ngIf="!isAuthenticated"
+        [routerLinkActive]="'active'"
+        class="nav-item"
+      >
+        <a
+          [routerLink]="['/auth']"
+          class="nav-link" href="#"
+        >Authenticate</a>
       </li>
       <li [routerLinkActive]="'active'"
         class="nav-item"
@@ -37,6 +48,15 @@
     
     <ul class="navbar-nav ml-3">
       <li
+        *ngIf="isAuthenticated"
+        class="nav-item">
+        <a
+          (click)="onLogout()"
+        style="cursor: pointer;"
+        >Logout</a>
+      </li>
+      <li
+        *ngIf="isAuthenticated"
         appDropdown
         class="nav-item dropdown">
         <a aria-expanded="false"
