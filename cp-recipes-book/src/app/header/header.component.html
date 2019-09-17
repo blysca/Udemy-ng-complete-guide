@@ -18,9 +18,9 @@
     class="collapse navbar-collapse"
     id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li [routerLinkActive]="'active'"
+      <li *ngIf="isAuthenticated"
+          [routerLinkActive]="'active'"
           class="nav-item"
-          *ngIf="isAuthenticated"
       >
         <a
           [routerLink]="['/recipes']"
@@ -37,7 +37,7 @@
         >Authenticate</a>
       </li>
       <li [routerLinkActive]="'active'"
-        class="nav-item"
+          class="nav-item"
       >
         <a
           [routerLink]="['/shopping-list']"
@@ -52,7 +52,8 @@
         class="nav-item">
         <a
           (click)="onLogout()"
-        style="cursor: pointer;"
+          class="nav-link"
+          style="cursor: pointer;"
         >Logout</a>
       </li>
       <li
@@ -63,15 +64,15 @@
            aria-haspopup="true"
            class="nav-link dropdown-toggle"
            data-toggle="dropdown"
-           style="cursor: pointer;"
-           id="manage-data" role="button">
+           id="manage-data"
+           role="button" style="cursor: pointer;">
           Manage
         </a>
         <div aria-labelledby="manage-data" class="dropdown-menu dropdown-menu-lg-right">
           <a
             (click)="onSaveData()"
-            style="cursor: pointer;"
-            class="dropdown-item">Save Data</a>
+            class="dropdown-item"
+            style="cursor: pointer;">Save Data</a>
           <a
             (click)="onFetchData()"
             class="dropdown-item"
