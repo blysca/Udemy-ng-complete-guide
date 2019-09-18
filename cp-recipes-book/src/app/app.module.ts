@@ -23,7 +23,6 @@ import {AuthModule} from './auth/auth.module';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    // RecipesModule, // lazy loading
     ShoppingListModule,
     AuthModule,
     SharedModule,
