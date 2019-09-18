@@ -33,7 +33,7 @@ export class RecipeEditComponent implements OnInit {
       );
   }
   
-  getControls() {
+  get ingredientsControls() {
     return (<FormArray>this.recipeForm.get('ingredients')).controls;
   }
   
