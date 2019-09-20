@@ -1,10 +1,8 @@
 import {Component, ComponentFactoryResolver, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Store} from '@ngrx/store';
-import {Observable, Subscription} from 'rxjs';
-import {Router} from '@angular/router';
+import {Subscription} from 'rxjs';
 
-import {AuthService, IAuthResponseData} from './auth.service';
 
 import {PlaceholderDirective} from '../shared/placeholder/placeholder.directive';
 
@@ -28,18 +26,17 @@ export class AuthComponent implements OnInit, OnDestroy {
   private storeSub: Subscription;
   
   constructor(
-    private authService: AuthService,
-    private router: Router,
-    private componentFactoryResolver : ComponentFactoryResolver,
+    private componentFactoryResolver: ComponentFactoryResolver,
     private store: Store<fromApp.AppState>
-  ) {}
+  ) {
+  }
   
   ngOnInit(): void {
-    this.storeSub = this.store.select('auth').subscribe( authState => {
+    this.storeSub = this.store.select('auth').subscribe(authState => {
       this.isLoading = authState.loading;
       this.error = authState.authError;
       if (this.error) {
-          this.showErrorAlert(this.error);
+        this.showErrorAlert(this.error);
       }
     });
   }
@@ -66,11 +63,11 @@ export class AuthComponent implements OnInit, OnDestroy {
     const password = form.value.password;
     
     if (this.isLoginMode) {
-      this.store.dispatch(new AuthActions.LoginStart({email, password}))
+      this.store.dispatch(new AuthActions.LoginStart({email, password}));
     } else {
-      this.store.dispatch(new AuthActions.SignupStart({email: email, password: password}))
+      this.store.dispatch(new AuthActions.SignupStart({email: email, password: password}));
     }
-  
+    
     form.reset();
   }
   
@@ -84,10 +81,10 @@ export class AuthComponent implements OnInit, OnDestroy {
     hostViewContainerRef.clear();
     const componentRef = hostViewContainerRef.createComponent(alertCmpFactory);
     componentRef.instance.message = message;
-    this.closeSub = componentRef.instance.close.subscribe(()=>{
+    this.closeSub = componentRef.instance.close.subscribe(() => {
       this.closeSub.unsubscribe();
       hostViewContainerRef.clear();
-    })
+    });
     
   }
 }

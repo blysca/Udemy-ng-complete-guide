@@ -4,16 +4,6 @@ import {Store} from '@ngrx/store';
 import * as fromApp from '../store/app.reducer';
 import * as AuthActions from './store/auth.actions';
 
-export interface IAuthResponseData {
-  email: string;
-  expiresIn: string;
-  idToken: string;
-  kind: string;
-  localId: string;
-  refreshToken: string;
-  registered?: boolean;
-}
-
 @Injectable({
   providedIn: 'root'
 })
