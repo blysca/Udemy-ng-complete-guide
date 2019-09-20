@@ -25,6 +25,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   @ViewChild(PlaceholderDirective, {static: false}) alertHost: PlaceholderDirective;
   
   private closeSub: Subscription;
+  private storeSub: Subscription;
   
   constructor(
     private authService: AuthService,
@@ -34,7 +35,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   ) {}
   
   ngOnInit(): void {
-    this.store.select('auth').subscribe( authState => {
+    this.storeSub = this.store.select('auth').subscribe( authState => {
       this.isLoading = authState.loading;
       this.error = authState.authError;
       if (this.error) {
@@ -46,6 +47,10 @@ export class AuthComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.closeSub) {
       this.closeSub.unsubscribe();
+    }
+    
+    if (this.storeSub) {
+      this.storeSub.unsubscribe();
     }
   }
   
@@ -60,43 +65,17 @@ export class AuthComponent implements OnInit, OnDestroy {
     const email = form.value.email;
     const password = form.value.password;
     
-    let authObs: Observable<IAuthResponseData>;
-    
-    this.isLoading = true;
     if (this.isLoginMode) {
-      /*console.log('*** this.isLoginMode ', this.isLoginMode);
-      authObs = this.authService.login(email, password);*/
       this.store.dispatch(new AuthActions.LoginStart({email, password}))
-      
-      
-      
     } else {
-      authObs = this.authService.signup(email, password);
+      this.store.dispatch(new AuthActions.SignupStart({email: email, password: password}))
     }
-   /*
-    this.store.select('auth').subscribe( authState => {
-    
-    });*/
   
-    /*authObs.subscribe(
-      (resData) => {
-        console.log('*** resData ', resData);
-        this.isLoading = false;
-        this.router.navigate(['./recipes']);
-      },
-      (errorMessage) => {
-        console.log('*** error ', errorMessage);
-        this.error = errorMessage;
-        this.showErrorAlert(errorMessage);
-        this.isLoading = false;
-      }
-    );*/
-    
     form.reset();
   }
   
   onHandleError() {
-    this.error = null;
+    this.store.dispatch(new AuthActions.ClearError());
   }
   
   private showErrorAlert(message: string) {
